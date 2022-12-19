@@ -1018,7 +1018,7 @@ class ESPEAKNGTTSWrapper(BaseTTSWrapper):
             self.tts_path,
             u"-z",
             u"-s",
-            300,
+            154,
             u"-v",
             self.CLI_PARAMETER_VOICE_CODE_STRING,
             u"-w",
