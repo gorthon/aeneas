@@ -1017,8 +1017,8 @@ class ESPEAKNGTTSWrapper(BaseTTSWrapper):
         self.set_subprocess_arguments([
             self.tts_path,
             u"-z",
-            # u"-s",
-            # 154,
+            u"-s",
+            154,
             u"-v",
             self.CLI_PARAMETER_VOICE_CODE_STRING,
             u"-w",
