@@ -62,6 +62,7 @@ from aeneas.runtimeconfiguration import RuntimeConfiguration
 from aeneas.ttswrappers.basettswrapper import BaseTTSWrapper
 import aeneas.globalfunctions as gf
 
+import sys
 
 class AWSTTSWrapper(BaseTTSWrapper):
     """
@@ -284,7 +285,7 @@ class AWSTTSWrapper(BaseTTSWrapper):
 
         while attempts > 0:
             self.log(u"Sleeping to throttle API usage...")
-            exit
+            sys.exit("Error message")
             time.sleep(sleep_delay)
             self.log(u"Sleeping to throttle API usage... done")
             self.log(u"Posting...")
