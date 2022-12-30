@@ -284,10 +284,10 @@ class AWSTTSWrapper(BaseTTSWrapper):
 
         while attempts > 0:
             self.log(u"Sleeping to throttle API usage...")
+            exit
             time.sleep(sleep_delay)
             self.log(u"Sleeping to throttle API usage... done")
             self.log(u"Posting...")
-            exit;
             try:
                 response = polly_client.synthesize_speech(
                     Text=text,
