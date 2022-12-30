@@ -579,7 +579,7 @@ class BaseTTSWrapper(Loggable):
             # actual call via subprocess
             self.log(u"Calling TTS engine...")
             self.log([u"Calling with arguments '%s'", arguments])
-            self.print_info([u"Calling with arguments '%s'", arguments])
+            # self.print_info([u"Calling with arguments '%s'", arguments])
             self.log([u"Calling with text '%s'", text])
             proc = subprocess.Popen(
                 arguments,
