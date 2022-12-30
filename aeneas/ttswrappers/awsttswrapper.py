@@ -298,6 +298,8 @@ class AWSTTSWrapper(BaseTTSWrapper):
                 self.log_exc(u"Unexpected exception on HTTP POST. Are you offline?", exc, True, ValueError)
             self.log(u"Posting... done")
             self.log(u"Reading response...")
+            self.log(response)
+            exit;
             try:
                 status_code = response["ResponseMetadata"]["HTTPStatusCode"]
                 response_content = response["AudioStream"].read()
