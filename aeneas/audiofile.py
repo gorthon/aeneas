@@ -452,9 +452,9 @@ class AudioFile(Loggable):
             self.log_exc(u"Audio format not supported by scipywavread", None, True, AudioFileUnsupportedFormatError)
 
         # if we converted the audio file, delete the temporary converted audio file
-        if convert_audio_file:
-            gf.delete_file(tmp_handler, tmp_file_path)
-            self.log([u"Deleted temporary audio file: '%s'", tmp_file_path])
+        # if convert_audio_file:
+        #     gf.delete_file(tmp_handler, tmp_file_path)
+        #     self.log([u"Deleted temporary audio file: '%s'", tmp_file_path])
 
         self._update_length()
         self.log([u"Sample length:  %.3f", self.audio_length])
