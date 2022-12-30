@@ -288,18 +288,18 @@ class AWSTTSWrapper(BaseTTSWrapper):
             
             # sys.exit(sleep_delay)
             time.sleep(sleep_delay)
-            sys.exit("survived sleep")
+            # sys.exit("survived sleep")
             self.log(u"Sleeping to throttle API usage... done")
             self.log(u"Posting...")
             try:
-                sys.exit("attempting polly call")
+                # sys.exit("attempting polly call")
                 response = polly_client.synthesize_speech(
                     Text=text,
                     OutputFormat=self.SAMPLE_FORMAT,
                     SampleRate="%d" % self.SAMPLE_RATE,
                     VoiceId=voice_code
                 )
-                sys.exit("survived polly call")
+                # sys.exit("survived polly call")
             except Exception as exc:
                 self.log_exc(u"Unexpected exception on HTTP POST. Are you offline?", exc, True, ValueError)
             self.log(u"Posting... done")
