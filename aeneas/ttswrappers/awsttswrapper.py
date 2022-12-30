@@ -285,7 +285,6 @@ class AWSTTSWrapper(BaseTTSWrapper):
 
         while attempts > 0:
             self.log(u"Sleeping to throttle API usage...")
-            sys.exit("Error message")
             time.sleep(sleep_delay)
             self.log(u"Sleeping to throttle API usage... done")
             self.log(u"Posting...")
@@ -296,12 +295,11 @@ class AWSTTSWrapper(BaseTTSWrapper):
                     SampleRate="%d" % self.SAMPLE_RATE,
                     VoiceId=voice_code
                 )
+                sys.exit("survived polly call")
             except Exception as exc:
                 self.log_exc(u"Unexpected exception on HTTP POST. Are you offline?", exc, True, ValueError)
             self.log(u"Posting... done")
             self.log(u"Reading response...")
-            self.log(response)
-            exit;
             try:
                 status_code = response["ResponseMetadata"]["HTTPStatusCode"]
                 response_content = response["AudioStream"].read()
