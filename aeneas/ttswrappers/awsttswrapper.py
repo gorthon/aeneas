@@ -278,7 +278,7 @@ class AWSTTSWrapper(BaseTTSWrapper):
         polly_client = boto3.client("polly")
 
         # post request
-        sleep_delay = self.rconf[RuntimeConfiguration.TTS_API_SLEEP]
+        sleep_delay = 1 #self.rconf[RuntimeConfiguration.TTS_API_SLEEP]
         attempts = self.rconf[RuntimeConfiguration.TTS_API_RETRY_ATTEMPTS]
         self.log([u"Sleep delay:    %.3f", sleep_delay])
         self.log([u"Retry attempts: %d", attempts])
@@ -286,7 +286,7 @@ class AWSTTSWrapper(BaseTTSWrapper):
         while attempts > 0:
             self.log(u"Sleeping to throttle API usage...")
             
-            sys.exit(sleep_delay)
+            # sys.exit(sleep_delay)
             time.sleep(sleep_delay)
             sys.exit("survived sleep")
             self.log(u"Sleeping to throttle API usage... done")
