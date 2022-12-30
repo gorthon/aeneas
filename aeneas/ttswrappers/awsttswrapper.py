@@ -229,7 +229,7 @@ class AWSTTSWrapper(BaseTTSWrapper):
         FRA: "Celine",          # F, M: Mathieu
         ISL: "Dora",            # F, M: Karl
         ITA: "Carla",           # F, M: Giorgio
-        JPN: "Mizuki",          # F
+        JPN: "Takumi",          # M, F: "Mizuki"
         NLD: "Lotte",           # F, M: Ruben
         NOR: "Liv",             # F
         POL: "Maja",            # F, F: Ewa, M: Jan, Jacek
