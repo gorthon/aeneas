@@ -286,6 +286,7 @@ class AWSTTSWrapper(BaseTTSWrapper):
         while attempts > 0:
             self.log(u"Sleeping to throttle API usage...")
             time.sleep(sleep_delay)
+            sys.exit("survived sleep")
             self.log(u"Sleeping to throttle API usage... done")
             self.log(u"Posting...")
             try:
