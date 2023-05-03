@@ -62,6 +62,7 @@ from aeneas.runtimeconfiguration import RuntimeConfiguration
 from aeneas.ttswrappers.basettswrapper import BaseTTSWrapper
 import aeneas.globalfunctions as gf
 
+import sys
 
 class AWSTTSWrapper(BaseTTSWrapper):
     """
@@ -229,7 +230,7 @@ class AWSTTSWrapper(BaseTTSWrapper):
         FRA: "Celine",          # F, M: Mathieu
         ISL: "Dora",            # F, M: Karl
         ITA: "Carla",           # F, M: Giorgio
-        JPN: "Mizuki",          # F
+        JPN: "Takumi",          # M, F: "Mizuki"
         NLD: "Lotte",           # F, M: Ruben
         NOR: "Liv",             # F
         POL: "Maja",            # F, F: Ewa, M: Jan, Jacek
@@ -277,23 +278,28 @@ class AWSTTSWrapper(BaseTTSWrapper):
         polly_client = boto3.client("polly")
 
         # post request
-        sleep_delay = self.rconf[RuntimeConfiguration.TTS_API_SLEEP]
+        sleep_delay = 1 #self.rconf[RuntimeConfiguration.TTS_API_SLEEP]
         attempts = self.rconf[RuntimeConfiguration.TTS_API_RETRY_ATTEMPTS]
         self.log([u"Sleep delay:    %.3f", sleep_delay])
         self.log([u"Retry attempts: %d", attempts])
 
         while attempts > 0:
             self.log(u"Sleeping to throttle API usage...")
+            
+            # sys.exit(sleep_delay)
             time.sleep(sleep_delay)
+            # sys.exit("survived sleep")
             self.log(u"Sleeping to throttle API usage... done")
             self.log(u"Posting...")
             try:
+                # sys.exit("attempting polly call")
                 response = polly_client.synthesize_speech(
                     Text=text,
                     OutputFormat=self.SAMPLE_FORMAT,
                     SampleRate="%d" % self.SAMPLE_RATE,
                     VoiceId=voice_code
                 )
+                # sys.exit("survived polly call")
             except Exception as exc:
                 self.log_exc(u"Unexpected exception on HTTP POST. Are you offline?", exc, True, ValueError)
             self.log(u"Posting... done")
